@@ -4,77 +4,74 @@ import no.hvl.dat100ptc.TODO;
 
 public class GPSPoint {
 
-	// TODO - objektvariable
-	
+	private int time;
+	private double latitude, longitude, elevation;
 	public GPSPoint(int time, double latitude, double longitude, double elevation) {
-
-		// TODO - konstruktur
-
-		throw new UnsupportedOperationException(TODO.construtor("GPSPoint"));
+		
+		this.time = time;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.elevation = elevation;
+		//throw new UnsupportedOperationException(TODO.construtor("GPSPoint"));
 		
 	}
 
-	// TODO - get/set metoder
 	public int getTime() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return time;
+		//throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public void setTime(int time) {
-				
-		throw new UnsupportedOperationException(TODO.method());
+		this.time = time;
+		//throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public double getLatitude() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return latitude;
+		//throw new UnsupportedOperationException(TODO.method());
 		
 		
 	}
 
 	public void setLatitude(double latitude) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		this.latitude = latitude;
+		//throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public double getLongitude() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return longitude;
+		//throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public void setLongitude(double longitude) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		this.longitude = longitude;
+		//throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public double getElevation() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return elevation;
+		//throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public void setElevation(double elevation) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		this.elevation = elevation;
+		//throw new UnsupportedOperationException(TODO.method());
 		
 	}
 	
 	public String toString() {
 		
-		String str;
+		String str = time + " (" + latitude + "," + longitude + ") " + elevation + "\n";
+		return str;
 		
-		throw new UnsupportedOperationException(TODO.method());
+		//throw new UnsupportedOperationException(TODO.method());
 
-		// TODO
 		
 	}
 }
-
-
-
-// kmmoon
