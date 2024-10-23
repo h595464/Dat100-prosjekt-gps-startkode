@@ -78,10 +78,12 @@ public class GPSComputer {
 	public double averageSpeed() {
 
 		double average = 0;
-		
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
-		
+		double[] speed = speeds();
+		for (int i = 0; i<gpspoints.length-1;i++) {
+			average += speed[i];
+		}
+		average = average/speed.length;			
+		return average;	
 	}
 
 
