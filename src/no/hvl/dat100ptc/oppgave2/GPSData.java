@@ -9,50 +9,13 @@ public class GPSData {
 	protected int antall = 0;
 
 	public GPSData(int n) {
-
-
 		gpspoints = new GPSPoint[n];
 		antall = 0;
-		
-		// throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO
-
-		gpspoints = new GPSPoint[n];
-		antall = 0;
-
 	}
 
 	public GPSPoint[] getGPSPoints() {
 		return this.gpspoints;
 	}
-
-
-		boolean inserted = false; 
-		
-		if (antall < gpspoints.length) {
-			gpspoints[antall] = gpspoint;
-			antall++;
-			inserted = true;
-		}
-		
-		return inserted;
-
-		// throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO 
-	
-	}
-
-	public boolean insert(String time, String latitude, String longitude, String elevation) {
-		
-		GPSPoint gpspoint = GPSDataConverter.convert(time, latitude, longitude, elevation);
-
-		return insertGPS(gpspoint);
-		
-		// throw new UnsupportedOperationException(TODO.method());
-
-		// TODO 
 
 	protected boolean insertGPS(GPSPoint gpspoint) {
 		boolean inserted;
@@ -67,32 +30,21 @@ public class GPSData {
 	}
 
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
-
 		
-		int timeTall = Integer.parseInt(time);
+		int timeTall = GPSDataConverter.toSeconds(time);
 		double latitudeTall = Double.parseDouble(latitude);
-		double longitudeTall = Double.parseDouble(latitude);
+		double longitudeTall = Double.parseDouble(longitude);
 		double elevationTall = Double.parseDouble(elevation);
 		GPSPoint gpspoint = new GPSPoint(timeTall, latitudeTall, longitudeTall,elevationTall);
-		insertGPS(gpspoint);
-		
-		
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+		return insertGPS(gpspoint);
 	}
 
 	public void print() {
-		
-		System.out.println("====== Konvertert GPS Data - START ======");
-		
-		for (int i = 0; i<antall; i++) {
-			System.out.println(gpspoints[i].toString());
+		System.out.println("====== GPS Data - START ======");
+		for (int i = 0; i<antall; i++)	{
+			System.out.print(gpspoints[i].toString());
 		}
-		
-		System.out.println("====== Konvertert GPS Data - SLUTT ======");
+		System.out.print("====== GPS Data - SLUTT ======");
 
-		// throw new UnsupportedOperationException(TODO.method());
-
-		// TODO
 	}
 }
