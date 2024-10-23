@@ -60,10 +60,11 @@ public class GPSUtils {
 
 	public static double distance(GPSPoint gpspoint1, GPSPoint gpspoint2) {
 
-		double latitude1 = gpspoint1.getLatitude();
-		double longitude1 = gpspoint1.getLongitude();
-		double latitude2 = gpspoint2.getLatitude();
-		double longitude2 = gpspoint2.getLongitude();
+		double latitude1 = toRadians(gpspoint1.getLatitude());
+		double longitude1 = toRadians(gpspoint1.getLongitude());
+	
+		double latitude2 = toRadians(gpspoint2.getLatitude());
+		double longitude2 = toRadians(gpspoint2.getLongitude());
 		
 		double deltaphi = latitude2-latitude1;
 		double deltadelta = longitude2-longitude1;
@@ -71,48 +72,44 @@ public class GPSUtils {
 		double a = compute_a(latitude1,latitude2,deltaphi,deltadelta);
 		double c = compute_c(a);
 		double  d = R*c;
+	
 		return d;
 		
 	}
 	
 	private static double compute_a(double phi1, double phi2, double deltaphi, double deltadelta) {
 		
-		phi1 = toRadians(phi1);
-		phi2 =toRadians(phi2);
-		deltaphi = toRadians(deltaphi);
-		deltadelta = toRadians(deltadelta);
-
-		double a = (sin(deltaphi/2))*(sin(deltaphi/2)) + cos(phi1) * cos(phi2) * ((sin(deltadelta/2))) * ((sin(deltadelta/2)));
+		double a = pow((sin(deltaphi/2)),2) + (cos(phi1) * cos(phi2) * pow((sin(deltadelta/2)),2));
 		return a;
 	}
 
 	private static double compute_c(double a) {
-		
-		double c = 2*atan2(sqrt(a),sqrt(a-1));
+		// skrev a-1 istedenfor 1-a og brukte over en time på å finne feilen;
+		double c = 2*atan2(sqrt(a),sqrt(1-a));
 		return c;
 		
 	}
 
 	
 	public static double speed(GPSPoint gpspoint1, GPSPoint gpspoint2) {
-
-		int secs;
-		double speed;
 		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO
+		double meter = distance(gpspoint1, gpspoint2);
+		int secs = gpspoint2.getTime() - gpspoint1.getTime();
+		double speed = meter/secs;
+		return speed;
 
 	}
 
 	public static String formatTime(int secs) {
-
-		String timestr;
-		String TIMESEP = ":";
-
-		throw new UnsupportedOperationException(TODO.method());
 		
-		// TODO 
+		int hours = secs / 3600;
+	    int minutes = (secs % 3600) / 60; 
+	    int seconds = secs % 60; 
+		String TIMESEP = ":";
+		String timestr = String.format("  %02d" + TIMESEP + "%02d" + TIMESEP + "%02d", hours, minutes, seconds);
+		System.out.println(timestr);
+		return timestr;
+
 		
 	}
 	
