@@ -12,6 +12,8 @@ import no.hvl.dat100ptc.TODO;
 
 public class ShowSpeed extends EasyGraphics {
 			
+	private static final long serialVersionUID = 1L;
+	
 	private static int MARGIN = 50;
 	private static int BARHEIGHT = 100; 
 
@@ -39,10 +41,29 @@ public class ShowSpeed extends EasyGraphics {
 	
 	public void showSpeedProfile(int ybase) {
 		
-		int x = MARGIN,y;
+		double[] speeds = gpscomputer.speeds();
+		for (int i = 0; i < speeds.length; i++) {
+			speeds[i] = speeds[i] * 3.6;
+		}
+		
+		
+		double averageSpeed = gpscomputer.averageSpeed() * 3.6;
+		
+		int x = MARGIN;
+		for (int i = 0; i < speeds.length; i++) {
+			int y = ybase -(int) speeds[i];
+			
+			drawLine (x, ybase, x, y);
+			
+			x += 2;
+		}
+		
+		int avgY = ybase - (int) averageSpeed;
+		setColor(0, 255, 0);
+		drawLine(MARGIN, avgY, MARGIN + 2 * speeds.length, avgY);
 	
 		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+		// throw new UnsupportedOperationException(TODO.method());
 		
 	}
 }
