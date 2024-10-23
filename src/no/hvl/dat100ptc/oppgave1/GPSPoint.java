@@ -18,7 +18,6 @@ public class GPSPoint {
 
 	public int getTime() {
 		return time;
-		//throw new UnsupportedOperationException(TODO.method());
 		
 	}
 

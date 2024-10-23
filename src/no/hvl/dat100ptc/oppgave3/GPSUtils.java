@@ -6,7 +6,7 @@ import no.hvl.dat100ptc.oppgave1.GPSPoint;
 import no.hvl.dat100ptc.TODO;
 
 public class GPSUtils {
-
+ 
 	public static double findMax(double[] da) {
 
 		double max; 
@@ -39,6 +39,7 @@ public class GPSUtils {
 	public static double[] getLatitudes(GPSPoint[] gpspoints) {
 
 		double[] latitude = new double[gpspoints.length];
+		
 		for (int i = 0; i<gpspoints.length; i++) {
 			latitude[i] = gpspoints[i].getLatitude();
 		}
