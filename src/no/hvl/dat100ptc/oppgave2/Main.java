@@ -4,6 +4,7 @@ import no.hvl.dat100ptc.oppgave1.GPSPoint;
 
 public class Main {
 
+
 	public static void main(String[] args) {
 		
 		GPSPoint gps1 = new GPSPoint(7777, 77.777777, 7.666777, 67.6);
@@ -15,6 +16,12 @@ public class Main {
 		gpsData.insertGPS(gps2);
 		
 		gpsData.print();
+
+	
+	
+	public static void main(String[] args) {
+		
+
 		// TODO
 		
 	}
