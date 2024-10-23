@@ -107,7 +107,6 @@ public class GPSUtils {
 	    int seconds = secs % 60; 
 		String TIMESEP = ":";
 		String timestr = String.format("  %02d" + TIMESEP + "%02d" + TIMESEP + "%02d", hours, minutes, seconds);
-		System.out.println(timestr);
 		return timestr;
 
 		
@@ -116,13 +115,9 @@ public class GPSUtils {
 	private static int TEXTWIDTH = 10;
 
 	public static String formatDouble(double d) {
+	
+		String str = String.format("      %.2f",d);
+		return str;
 
-		String str;
-
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
-		// TODO
-		
 	}
 }
