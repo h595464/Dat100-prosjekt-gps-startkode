@@ -89,22 +89,46 @@ public class GPSComputer {
 
 	public double kcal(double weight, int secs, double speed) {
 
-		double kcal;
-
+		
+		int timer = secs/3600;
 		double met = 0;		
 		double speedmph = speed * MS;
-
-		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
-		
+		double kcal = met * weight * timer;
+		while(speedmph<10)	{
+			met = 4.0;
+			break;
+		}
+		while(speedmph>10 && speedmph<12)	{
+			met = 6.0;
+			break;
+		}
+		while(speedmph>12 && speedmph<14)	{
+			met = 8.0;
+			break;
+		}
+		while(speedmph>14 && speedmph<16)	{
+			met = 10.0;
+			break;
+		}
+		while(speedmph>16 && speedmph<20)	{
+			met = 12.0;
+			break;
+		}
+		while(met>20)	{
+			met = 16.0;
+			break;
+		}
+		return kcal;
 	}
 
 	public double totalKcal(double weight) {
 
 		double totalkcal = 0;
-
-		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
+		for(int i = 0; i<gpspoints.length-1; i++)	{
+			totalkcal += kcal(weight, gpspoints[i].getTime(),GPSUtils.speed(gpspoints[i],gpspoints[i+1]));
+		}
+		
+		return totalkcal;
 		
 	}
 	
