@@ -118,20 +118,22 @@ public class GPSComputer {
 	public double totalKcal(double weight) {
 		// er overbevist om at dette er riktig;
 		double totalkcal = 0;
-		int timeDiff = 0;
 		for(int i = 0; i<gpspoints.length-1; i++)	{
-			timeDiff = gpspoints[i+1].getTime() - gpspoints[i].getTime();
-			totalkcal += kcal(weight, timeDiff,GPSUtils.speed(gpspoints[i],gpspoints[i+1]));
+			GPSPoint endpoint = gpspoints[i+1];
+			GPSPoint startpoint = gpspoints[i];
+			int tidISec = endpoint.getTime() - startpoint.getTime();
+			
+			totalkcal += kcal(weight, tidISec,GPSUtils.speed(startpoint,endpoint));
 		
 			
 		    double speed = GPSUtils.speed(gpspoints[i],gpspoints[i+1]);
 			
 	        System.out.println("Point " + i + ":");
-	        System.out.println("Time diff: " + timeDiff);
+	        System.out.println("Time diff: " + tidISec);
 	        System.out.println("Speed: " + speed);
 	        System.out.println("Weight: " + weight);
 	        
-	        double currentKcal = kcal(weight, timeDiff, speed);
+	        double currentKcal = kcal(weight, tidISec, speed);
 	        System.out.println("Current kcal: " + currentKcal);
 	        
 	        totalkcal += currentKcal;
