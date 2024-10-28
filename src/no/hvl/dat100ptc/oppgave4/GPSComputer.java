@@ -95,8 +95,7 @@ public class GPSComputer {
 		double speedmph = speed * MS;
 		
 		if(speedmph<10)	{
-			met = 4.0;
-			
+			met = 4.0;	
 		}
 		else if(speedmph>10 && speedmph<12)	{
 			met = 6.0;
@@ -123,7 +122,7 @@ public class GPSComputer {
 		int timeDiff = 0;
 		for(int i = 0; i<gpspoints.length-1; i++)	{
 			timeDiff = gpspoints[i+1].getTime() - gpspoints[i].getTime();
-			totalkcal += kcal(weight, timeDiff,GPSUtils.speed(gpspoints[i],gpspoints[i+1]));
+			totalkcal += kcal(weight, timeDiff,(GPSUtils.speed(gpspoints[i],gpspoints[i+1]))*MS);
 		
 			
 		    double speed = GPSUtils.speed(gpspoints[i],gpspoints[i+1]);
