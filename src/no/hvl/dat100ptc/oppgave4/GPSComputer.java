@@ -93,39 +93,51 @@ public class GPSComputer {
 		int timer = secs/3600;
 		double met = 0;		
 		double speedmph = speed * MS;
-		double kcal = met * weight * timer;
-		while(speedmph<10)	{
+		
+		if(speedmph<10)	{
 			met = 4.0;
-			break;
+			
 		}
-		while(speedmph>10 && speedmph<12)	{
+		else if(speedmph>10 && speedmph<12)	{
 			met = 6.0;
-			break;
 		}
-		while(speedmph>12 && speedmph<14)	{
+		else if (speedmph>12 && speedmph<14)	{
 			met = 8.0;
-			break;
 		}
-		while(speedmph>14 && speedmph<16)	{
+		else if(speedmph>14 && speedmph<16)	{
 			met = 10.0;
-			break;
 		}
-		while(speedmph>16 && speedmph<20)	{
+		else if(speedmph>16 && speedmph<20)	{
 			met = 12.0;
-			break;
 		}
-		while(met>20)	{
+		else if(met>20)	{
 			met = 16.0;
-			break;
 		}
+		double kcal = met * weight * timer;
 		return kcal;
 	}
 
 	public double totalKcal(double weight) {
 
 		double totalkcal = 0;
+		int timeDiff = 0;
 		for(int i = 0; i<gpspoints.length-1; i++)	{
-			totalkcal += kcal(weight, gpspoints[i].getTime(),GPSUtils.speed(gpspoints[i],gpspoints[i+1]));
+			timeDiff = gpspoints[i+1].getTime() - gpspoints[i].getTime();
+			totalkcal += kcal(weight, timeDiff,GPSUtils.speed(gpspoints[i],gpspoints[i+1]));
+		
+			
+		    double speed = GPSUtils.speed(gpspoints[i],gpspoints[i+1]);
+			
+	        System.out.println("Point " + i + ":");
+	        System.out.println("Time diff: " + timeDiff);
+	        System.out.println("Speed: " + speed);
+	        System.out.println("Weight: " + weight);
+	        
+	        double currentKcal = kcal(weight, timeDiff, speed);
+	        System.out.println("Current kcal: " + currentKcal);
+	        
+	        totalkcal += currentKcal;
+	        System.out.println("Running total: " + totalkcal);
 		}
 		
 		return totalkcal;
