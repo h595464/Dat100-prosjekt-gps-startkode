@@ -116,7 +116,7 @@ public class GPSComputer {
 	}
 
 	public double totalKcal(double weight) {
-
+		// er overbevist om at dette er riktig;
 		double totalkcal = 0;
 		int timeDiff = 0;
 		for(int i = 0; i<gpspoints.length-1; i++)	{
@@ -145,10 +145,27 @@ public class GPSComputer {
 	private static double WEIGHT = 80.0;
 	
 	public void displayStatistics() {
-
-		// TODO 
-		throw new UnsupportedOperationException(TODO.method());
 		
+		int totalTime = totalTime();
+		double totalDistance = totalDistance()/1000;
+		double totalElevation = totalElevation();
+		double maxSpeed = maxSpeed() * 3.6;
+		double averageSpeed = averageSpeed() * 3.6;
+		double totalKcal = totalKcal(WEIGHT);
+		
+		System.out.println("==============================================");
+	    System.out.printf("Total Time     : %s%n", GPSUtils.formatTime(totalTime));
+	    System.out.printf("Total distance : %10.2f km%n", totalDistance);
+	    System.out.printf("Total elevation: %10.2f m%n", totalElevation);
+	    System.out.printf("Max speed      : %10.2f km/t%n", maxSpeed);
+	    System.out.printf("Average speed  : %10.2f km/t%n", averageSpeed);
+	    System.out.printf("Energy         : %10.2f kcal%n", totalKcal);
+	    System.out.println("==============================================");
 	}
 
+		// TODO 
+		// throw new UnsupportedOperationException(TODO.method());
+		
+	
 }
+
