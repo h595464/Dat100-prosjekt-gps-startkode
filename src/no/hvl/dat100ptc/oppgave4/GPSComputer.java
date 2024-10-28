@@ -89,8 +89,8 @@ public class GPSComputer {
 
 	public double kcal(double weight, int secs, double speed) {
 	
-		double timer = secs/3600;
-		double met = 0;	
+		double timer = secs/3600.0;
+		double met;	
 		double speedmph = speed * MS;
 		
 		if(speedmph<=10)	{
