@@ -123,8 +123,9 @@ public class GPSComputer {
 			GPSPoint startpoint = gpspoints[i];
 			
 			int tidISec = endpoint.getTime() - startpoint.getTime();
+			double speed = GPSUtils.speed(startpoint,endpoint);
 			
-			totalkcal += kcal(weight, tidISec,GPSUtils.speed(startpoint,endpoint));
+			totalkcal += kcal(weight,tidISec,speed);
 		
 		}
 		
