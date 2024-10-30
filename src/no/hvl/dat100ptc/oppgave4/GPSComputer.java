@@ -37,7 +37,7 @@ public class GPSComputer {
 
 	}
 
-	public double totalElevation() {
+	/*public double totalElevation() {
 		
 		double totalElevation = gpspoints[0].getElevation();
 		for (int i = 0; i<gpspoints.length - 1; i++)	{
@@ -47,7 +47,7 @@ public class GPSComputer {
 			}
 		}
 		return totalElevation;
-	}
+	}*/
 
 	public int totalTime() {
 		
