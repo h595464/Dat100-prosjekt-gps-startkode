@@ -31,22 +31,20 @@ public class GPSData {
 
 	public boolean insert(String time, String latitude, String longitude, String elevation) {
 		
-		int timeTall = Integer.parseInt(time);
+		int timeTall = GPSDataConverter.toSeconds(time);
 		double latitudeTall = Double.parseDouble(latitude);
-		double longitudeTall = Double.parseDouble(latitude);
+		double longitudeTall = Double.parseDouble(longitude);
 		double elevationTall = Double.parseDouble(elevation);
 		GPSPoint gpspoint = new GPSPoint(timeTall, latitudeTall, longitudeTall,elevationTall);
-		insertGPS(gpspoint);
-		
-		
-		// TODO
-		throw new UnsupportedOperationException(TODO.method());
+		return insertGPS(gpspoint);
 	}
 
 	public void print() {
+		System.out.println("====== GPS Data - START ======");
+		for (int i = 0; i<antall; i++)	{
+			System.out.print(gpspoints[i].toString());
+		}
+		System.out.print("====== GPS Data - SLUTT ======");
 
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO
 	}
 }
